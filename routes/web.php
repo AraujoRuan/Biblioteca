@@ -43,4 +43,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/super-admin/settings', [SuperAdminController::class, 'settings'])->name('super-admin.settings');
         Route::post('/super-admin/settings', [SuperAdminController::class, 'updateSettings']);
     });
+
+    // Loans management
+    Route::resource('loans', LoanController::class);
+    Route::post('/loans/{loan}/return', [LoanController::class, 'returnBook'])->name('loans.return');
 });
